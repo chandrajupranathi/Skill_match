@@ -16,12 +16,13 @@ from sklearn.preprocessing import OneHotEncoder, StandardScaler
 # 1. PROJECT PATH
 # ============================================================
 
+DATASET_FOLDER = Path(
+    r"C:\Users\LEELA PRASAD\PycharmProjects\Skill_Match\dataset"
+)
 
-DATASET_FOLDER = "C:/Users/AMAN/Documents/Skill_Match/dataset/reordered_raw.csv"
+OUTPUT_FILE = DATASET_FOLDER / "final_preprocessed.csv"
 
-OUTPUT_FILE =  "C:/Users/AMAN/Documents/Skill_Match/dataset/final_preprocessed.csv"
-
-CLEANED_FILE = "C:/Users/AMAN/Documents/Skill_Match/dataset/cleaned_mean_model_imputed.csv"
+CLEANED_FILE = DATASET_FOLDER / "cleaned_mean_model_imputed.csv"
 
 
 # ============================================================
@@ -53,6 +54,7 @@ print(INPUT_FILE)
 
 df = pd.read_csv(INPUT_FILE)
 
+
 print("\nDataset loaded successfully!")
 
 print("Rows    :", df.shape[0])
@@ -64,6 +66,7 @@ print("Columns :", df.shape[1])
 # ============================================================
 
 TARGET_COLUMN = "Attrition"
+
 
 if TARGET_COLUMN not in df.columns:
 
@@ -86,20 +89,16 @@ print(
 
 
 # ============================================================
-# 6. TARGET IS ALREADY NUMERIC
+# 6. CONVERT TARGET TO NUMERIC
 # ============================================================
 
-# The previous preprocessing file already converted:
-#
 # No  -> 0
 # Yes -> 1
-#
-# Therefore, do NOT map Yes/No again.
 
-df[TARGET_COLUMN] = pd.to_numeric(
-    df[TARGET_COLUMN],
-    errors="coerce"
-)
+df[TARGET_COLUMN] = df[TARGET_COLUMN].map({
+    "No": 0,
+    "Yes": 1
+})
 
 
 # ============================================================
@@ -116,6 +115,7 @@ if df[TARGET_COLUMN].isna().any():
 valid_targets = set(
     df[TARGET_COLUMN].unique()
 )
+
 
 if not valid_targets.issubset({0, 1}):
 
@@ -166,15 +166,18 @@ print("\n" + "=" * 60)
 print("FEATURE INFORMATION")
 print("=" * 60)
 
+
 print("\nNumeric features:")
 
 for column in numeric_features:
+
     print("-", column)
 
 
 print("\nCategorical features:")
 
 for column in categorical_features:
+
     print("-", column)
 
 
@@ -184,8 +187,10 @@ for column in categorical_features:
 
 numeric_pipeline = Pipeline(
     steps=[
+
         (
             "imputer",
+
             SimpleImputer(
                 strategy="mean"
             )
@@ -193,6 +198,7 @@ numeric_pipeline = Pipeline(
 
         (
             "scaler",
+
             StandardScaler()
         )
     ]
@@ -205,8 +211,10 @@ numeric_pipeline = Pipeline(
 
 categorical_pipeline = Pipeline(
     steps=[
+
         (
             "imputer",
+
             SimpleImputer(
                 strategy="most_frequent"
             )
@@ -214,6 +222,7 @@ categorical_pipeline = Pipeline(
 
         (
             "onehot",
+
             OneHotEncoder(
                 handle_unknown="ignore",
                 sparse_output=False
@@ -228,16 +237,22 @@ categorical_pipeline = Pipeline(
 # ============================================================
 
 preprocessor = ColumnTransformer(
+
     transformers=[
+
         (
             "numeric",
+
             numeric_pipeline,
+
             numeric_features
         ),
 
         (
             "categorical",
+
             categorical_pipeline,
+
             categorical_features
         )
     ]
@@ -269,7 +284,9 @@ feature_names = (
 # ============================================================
 
 X_processed_df = pd.DataFrame(
+
     X_processed,
+
     columns=feature_names
 )
 
@@ -286,6 +303,7 @@ X_processed_df[TARGET_COLUMN] = y.values
 # ============================================================
 
 missing_values = (
+
     X_processed_df
     .isnull()
     .sum()
@@ -303,7 +321,9 @@ print(missing_values)
 # ============================================================
 
 X_processed_df.to_csv(
+
     OUTPUT_FILE,
+
     index=False
 )
 
@@ -316,22 +336,35 @@ print("\n" + "=" * 60)
 print("FINAL PREPROCESSING COMPLETED")
 print("=" * 60)
 
+
 print("\nOriginal shape:")
+
 print(df.shape)
 
+
 print("\nFinal shape:")
+
 print(X_processed_df.shape)
 
+
 print("\nTarget distribution:")
+
 print(
     X_processed_df[TARGET_COLUMN]
     .value_counts()
 )
 
+
 print("\nOutput file:")
+
 print(OUTPUT_FILE)
 
+
 print("\nFirst 5 rows:")
-print(X_processed_df.head())
+
+print(
+    X_processed_df.head()
+)
+
 
 print("\nFinal preprocessed CSV saved successfully!")

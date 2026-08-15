@@ -1,25 +1,42 @@
 import pandas as pd
 from sklearn.preprocessing import StandardScaler, MinMaxScaler, Normalizer
-import matplotlib.pyplot as plt
+from pathlib import Path
 
 
 # ============================================================
-# Step 1: Load Dataset
+# 1. PROJECT PATH
 # ============================================================
 
-file_path = "C:/Users/AMAN/Documents/Skill_Match/dataset/reordered_raw.csv"
+PROJECT_DIR = Path(__file__).resolve().parent.parent
 
-df = pd.read_csv(file_path)
+DATASET_FOLDER = PROJECT_DIR / "dataset"
 
-print("Original Dataset")
-print("------------------------")
+INPUT_FILE = DATASET_FOLDER / "reordered_raw.csv"
+
+OUTPUT_FILE = DATASET_FOLDER / "clean_minmax_stand_norma_M2.csv"
+
+
+# ============================================================
+# 2. LOAD DATASET
+# ============================================================
+
+df = pd.read_csv(INPUT_FILE)
+
+print("=" * 60)
+print("ORIGINAL DATASET")
+print("=" * 60)
+
+print("Input file :", INPUT_FILE)
+print("Rows       :", df.shape[0])
+print("Columns    :", df.shape[1])
+
+print("\nFirst 5 rows:")
 print(df.head())
 
-print("\nDataset Shape:", df.shape)
 
-print("\nData Types:")
-print("------------------------")
-print(df.dtypes)
+# ============================================================
+# 3. CHECK MISSING VALUES
+# ============================================================
 
 print("\nMissing Values:")
 print("------------------------")
@@ -29,88 +46,120 @@ print("\nDuplicate Records:", df.duplicated().sum())
 
 
 # ============================================================
-# Step 2: Remove Duplicate Records
+# 4. REMOVE DUPLICATE RECORDS
 # ============================================================
 
 df = df.drop_duplicates()
 
-print("\nDataset Shape After Removing Duplicates:", df.shape)
+print("\nDataset Shape After Removing Duplicates:")
+print(df.shape)
 
 
 # ============================================================
-# Step 3: Handle Missing Values
+# 5. IDENTIFY NUMERIC COLUMNS
 # ============================================================
 
-# Numerical Columns
 numerical_columns = df.select_dtypes(
-    include=['int64', 'float64']
-).columns
+    include="number"
+).columns.tolist()
 
-# Fill missing numerical values with mean
-for column in numerical_columns:
-    df[column] = df[column].fillna(df[column].mean())
-
-
-# Categorical Columns
-categorical_columns = df.select_dtypes(
-    include=['object', 'str']
-).columns
-
-# Fill missing categorical values with mode
-for column in categorical_columns:
-    df[column] = df[column].fillna(df[column].mode()[0])
+print("\nNumeric Columns:")
+print(numerical_columns)
 
 
 # ============================================================
-# Step 4: Remove Leading and Trailing Spaces
+# 6. IDENTIFY CATEGORICAL COLUMNS
 # ============================================================
 
-for column in categorical_columns:
-    df[column] = df[column].str.strip()
-
-
-# ============================================================
-# Step 5: Remove Useless Columns
-# ============================================================
-
-# These columns do not provide useful information
-# for machine learning.
-
-columns_to_remove = [
-    'EmployeeCount',
-    'EmployeeNumber',
-    'StandardHours',
-    'Over18'
+categorical_columns = [
+    column
+    for column in df.columns
+    if column not in numerical_columns
 ]
 
-# Remove only columns that actually exist
+print("\nCategorical Columns:")
+print(categorical_columns)
+
+
+# ============================================================
+# 7. HANDLE MISSING NUMERIC VALUES
+#    Missing values -> MEAN
+# ============================================================
+
+for column in numerical_columns:
+
+    df[column] = df[column].fillna(
+        df[column].mean()
+    )
+
+
+# ============================================================
+# 8. HANDLE MISSING CATEGORICAL VALUES
+#    Missing values -> MODE
+# ============================================================
+
+for column in categorical_columns:
+
+    df[column] = df[column].fillna(
+        df[column].mode()[0]
+    )
+
+
+# ============================================================
+# 9. REMOVE LEADING/TRAILING SPACES
+# ============================================================
+
+for column in categorical_columns:
+
+    df[column] = (
+        df[column]
+        .astype(str)
+        .str.strip()
+    )
+
+
+# ============================================================
+# 10. REMOVE USELESS COLUMNS
+# ============================================================
+
 columns_to_remove = [
-    column for column in columns_to_remove
+    "EmployeeCount",
+    "EmployeeNumber",
+    "StandardHours",
+    "Over18"
+]
+
+# Remove only columns that exist
+columns_to_remove = [
+    column
+    for column in columns_to_remove
     if column in df.columns
 ]
 
-df = df.drop(columns=columns_to_remove)
+df = df.drop(
+    columns=columns_to_remove
+)
 
 print("\nRemoved Useless Columns:")
 print(columns_to_remove)
 
 
 # ============================================================
-# Step 6: Select Numeric Columns
+# 11. SELECT NUMERIC COLUMNS AGAIN
 # ============================================================
 
 numeric_columns = df.select_dtypes(
-    include=['int64', 'float64']
-).columns
+    include="number"
+).columns.tolist()
 
-print("\nNumeric Columns:")
-print(list(numeric_columns))
+print("\nNumeric Columns Used for Scaling:")
+print(numeric_columns)
 
 
 # ============================================================
-# Step 7: Standardization (Z-score)
-# Mean = 0
-# Standard Deviation = 1
+# 12. STANDARDIZATION
+#    Mean = 0
+#    Standard Deviation = 1
 # ============================================================
 
 standard_scaler = StandardScaler()
@@ -122,16 +171,16 @@ standardized = standard_scaler.fit_transform(
 standardized_df = pd.DataFrame(
     standardized,
     columns=[
-        col + "_Standardized"
-        for col in numeric_columns
+        column + "_Standardized"
+        for column in numeric_columns
     ],
     index=df.index
 )
 
 
 # ============================================================
-# Step 8: Min-Max Scaling
-# Values between 0 and 1
+# 13. MIN-MAX SCALING
+#    Values between 0 and 1
 # ============================================================
 
 minmax_scaler = MinMaxScaler()
@@ -143,19 +192,21 @@ scaled = minmax_scaler.fit_transform(
 scaled_df = pd.DataFrame(
     scaled,
     columns=[
-        col + "_Scaled"
-        for col in numeric_columns
+        column + "_Scaled"
+        for column in numeric_columns
     ],
     index=df.index
 )
 
 
 # ============================================================
-# Step 9: Normalization (L2 Normalization)
-# Each row becomes a unit vector
+# 14. NORMALIZATION
+#    L2 Normalization
 # ============================================================
 
-normalizer = Normalizer(norm='l2')
+normalizer = Normalizer(
+    norm="l2"
+)
 
 normalized = normalizer.fit_transform(
     df[numeric_columns]
@@ -164,15 +215,15 @@ normalized = normalizer.fit_transform(
 normalized_df = pd.DataFrame(
     normalized,
     columns=[
-        col + "_Normalized"
-        for col in numeric_columns
+        column + "_Normalized"
+        for column in numeric_columns
     ],
     index=df.index
 )
 
 
 # ============================================================
-# Step 10: Combine Original + Processed Columns
+# 15. COMBINE ALL DATA
 # ============================================================
 
 df = pd.concat(
@@ -187,66 +238,51 @@ df = pd.concat(
 
 
 # ============================================================
-# Step 11: Display Results After Preprocessing
+# 16. CHECK FINAL DATASET
 # ============================================================
 
-print("\nDisplay Results After Preprocessed Dataset")
-print("--------------------------------------------")
+print("\n" + "=" * 60)
+print("PREPROCESSED DATASET")
+print("=" * 60)
 
+print("\nDataset Shape:")
+print(df.shape)
+
+print("\nFirst 5 rows:")
 print(df.head())
 
-print("\nDataset Shape:", df.shape)
-
-print("\nDataset Information:")
-print("------------------------")
-df.info()
-
-print("\nColumns in Dataset:")
-print(df.columns.tolist())
-
 print("\nMissing Values After Preprocessing:")
-print(df.isnull().sum())
+print(df.isnull().sum().sum())
 
 print("\nDuplicate Records After Preprocessing:")
 print(df.duplicated().sum())
 
 
 # ============================================================
-# Step 12: Save Preprocessed Dataset
+# 17. SAVE DATASET
 # ============================================================
 
-output_path = "C:/Users/AMAN/Documents/Skill_Match/dataset/clean_minmax_stand_norma_M2.csv"
-
 df.to_csv(
-    output_path,
+    OUTPUT_FILE,
     index=False
 )
 
-print("\nPreprocessed dataset saved successfully.")
-print("Saved to:", output_path)
-
 
 # ============================================================
-# Step 13: Read Preprocessed Dataset
+# 18. FINAL RESULT
 # ============================================================
 
-pf = pd.read_csv(output_path)
+print("\n" + "=" * 60)
+print("PREPROCESSING COMPLETED SUCCESSFULLY")
+print("=" * 60)
 
+print("Input file:")
+print(INPUT_FILE)
 
-# ============================================================
-# Step 14: Display Histograms
-# ============================================================
+print("\nOutput file:")
+print(OUTPUT_FILE)
 
-pf.hist(
-    figsize=(15, 12),
-    bins=10,
-    edgecolor='black'
-)
+print("\nFinal Shape:")
+print(df.shape)
 
-plt.suptitle(
-    "Histogram of Preprocessed Employee Attrition Dataset"
-)
-
-plt.tight_layout()
-
-plt.show()
+print("\nFile saved successfully!")

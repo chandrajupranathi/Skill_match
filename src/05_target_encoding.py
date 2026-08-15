@@ -1,27 +1,19 @@
 import pandas as pd
 from category_encoders import TargetEncoder
-from pathlib import Path
-
 
 # ============================================================
-# 1. FILE PATHS
+# FILE PATHS
 # ============================================================
 
+INPUT_FILE = r"C:\Users\LEELA PRASAD\PycharmProjects\Skill_Match\dataset\reordered_raw.csv"
 
-
-INPUT_FILE ="C:/Users/AMAN/Documents/Skill_Match/dataset/reordered_raw.csv"
-OUTPUT_FILE = "C:/Users/AMAN/Documents/Skill_Match/dataset/target_encoding.csv"
-
-
-# ============================================================
-# 2. TARGET COLUMN
-# ============================================================
+OUTPUT_FILE = r"C:\Users\LEELA PRASAD\PycharmProjects\Skill_Match\dataset\target_encoding.csv"
 
 TARGET_COLUMN = "Attrition"
 
 
 # ============================================================
-# 3. READ DATASET
+# LOAD DATASET
 # ============================================================
 
 df = pd.read_csv(INPUT_FILE)
@@ -33,65 +25,53 @@ print("=" * 60)
 print("Rows    :", df.shape[0])
 print("Columns :", df.shape[1])
 
+
+# ============================================================
+# TARGET COLUMN
+# ============================================================
+
 print("\nTarget column:", TARGET_COLUMN)
 
-
-# ============================================================
-# 4. CHECK TARGET COLUMN
-# ============================================================
-
-if TARGET_COLUMN not in df.columns:
-    raise ValueError(
-        f"Target column '{TARGET_COLUMN}' not found in dataset."
-    )
-
-
-# ============================================================
-# 5. CONVERT TARGET TO NUMERIC
-# ============================================================
-
+# Convert Yes/No into 1/0
 df[TARGET_COLUMN] = (
     df[TARGET_COLUMN]
     .astype(str)
     .str.strip()
     .map({
-        "No": 0,
-        "Yes": 1
+        "Yes": 1,
+        "No": 0
     })
 )
 
-
 print("\nTarget values:")
-print(df[TARGET_COLUMN].value_counts(dropna=False))
+print(df[TARGET_COLUMN].value_counts())
 
 
 # ============================================================
-# 6. FIND CATEGORICAL COLUMNS
+# CATEGORICAL COLUMNS
 # ============================================================
 
-categorical_columns = []
-
-for column in df.columns:
-
-    if column == TARGET_COLUMN:
-        continue
-
-    if df[column].dtype == "object" or \
-       pd.api.types.is_string_dtype(df[column]):
-
-        categorical_columns.append(column)
-
+categorical_columns = [
+    "BusinessTravel",
+    "Department",
+    "EducationField",
+    "Gender",
+    "JobRole",
+    "MaritalStatus",
+    "Over18",
+    "OverTime"
+]
 
 print("\n" + "=" * 60)
 print("CATEGORICAL COLUMNS")
 print("=" * 60)
 
 for column in categorical_columns:
-    print(column)
+    print("-", column)
 
 
 # ============================================================
-# 7. TARGET ENCODING
+# TARGET ENCODING
 # ============================================================
 
 encoder = TargetEncoder(
@@ -100,7 +80,10 @@ encoder = TargetEncoder(
     handle_unknown="value"
 )
 
+# Convert categorical columns to string
+df[categorical_columns] = df[categorical_columns].astype(str)
 
+# Apply Target Encoding
 df[categorical_columns] = encoder.fit_transform(
     df[categorical_columns],
     df[TARGET_COLUMN]
@@ -108,28 +91,22 @@ df[categorical_columns] = encoder.fit_transform(
 
 
 # ============================================================
-# 8. SAVE ENCODED DATASET
+# SAVE OUTPUT
 # ============================================================
 
-df.to_csv(
-    OUTPUT_FILE,
-    index=False
-)
+df.to_csv(OUTPUT_FILE, index=False)
 
 
 # ============================================================
-# 9. FINAL INFORMATION
+# RESULTS
 # ============================================================
 
 print("\n" + "=" * 60)
 print("TARGET ENCODING COMPLETED")
 print("=" * 60)
 
-print("Original rows    :", 1470)
-print("Original columns :", 35)
-
-print("Output rows      :", df.shape[0])
-print("Output columns   :", df.shape[1])
+print("Output rows    :", df.shape[0])
+print("Output columns :", df.shape[1])
 
 print("\nOutput file:")
 print(OUTPUT_FILE)

@@ -5,9 +5,9 @@ import pandas as pd
 # FILE PATH
 # ============================================================
 
-INPUT_FILE = "C:/Users/AMAN/Documents/Skill_Match/dataset/reordered_raw.csv"
+INPUT_FILE = r"C:\Users\LEELA PRASAD\PycharmProjects\Skill_Match\dataset\cleaned_mean_model_imputed.csv"
 
-OUTPUT_FILE = "C:/Users/AMAN/Documents/Skill_Match/dataset/embedding_encoding.csv"
+OUTPUT_FILE = r"C:\Users\LEELA PRASAD\PycharmProjects\Skill_Match\dataset\embedding_encoding.csv"
 
 
 # ============================================================
@@ -47,13 +47,16 @@ categorical_columns = [
 
 for column in categorical_columns:
 
+    # Get unique categories
     categories = df[column].astype(str).unique()
 
+    # Give each category a number
     mapping = {
         category: index
         for index, category in enumerate(categories)
     }
 
+    # Replace categories with their numbers
     df[column] = (
         df[column]
         .astype(str)
@@ -62,7 +65,7 @@ for column in categorical_columns:
 
 
 # ============================================================
-# SAVE
+# SAVE ENCODED DATASET
 # ============================================================
 
 df.to_csv(
@@ -75,7 +78,9 @@ df.to_csv(
 # RESULT
 # ============================================================
 
-print("\nEmbedding Encoding completed!")
+print("\n" + "=" * 60)
+print("EMBEDDING ENCODING COMPLETED")
+print("=" * 60)
 
 print("Output shape:", df.shape)
 
@@ -84,3 +89,5 @@ print(OUTPUT_FILE)
 
 print("\nFirst 5 rows:")
 print(df.head())
+
+print("\nFile saved successfully!")

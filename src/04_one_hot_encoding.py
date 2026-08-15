@@ -5,9 +5,9 @@ import pandas as pd
 # FILE PATH
 # ============================================================
 
-INPUT_FILE ="C:/Users/AMAN/Documents/Skill_Match/dataset/reordered_raw.csv"
+INPUT_FILE = r"C:\Users\LEELA PRASAD\PycharmProjects\Skill_Match\dataset\cleaned_mean_model_imputed.csv"
 
-OUTPUT_FILE = "C:/Users/AMAN/Documents/Skill_Match/dataset/one_hot_encoding.csv"
+OUTPUT_FILE = r"C:\Users\LEELA PRASAD\PycharmProjects\Skill_Match\dataset\one_hot_encoding.csv"
 
 
 # ============================================================
@@ -66,7 +66,9 @@ df.to_csv(
 # RESULT
 # ============================================================
 
-print("\nOne-Hot Encoding completed!")
+print("\n" + "=" * 60)
+print("ONE-HOT ENCODING COMPLETED")
+print("=" * 60)
 
 print("Output shape:", df.shape)
 
@@ -75,3 +77,5 @@ print(OUTPUT_FILE)
 
 print("\nFirst 5 rows:")
 print(df.head())
+
+print("\nFile saved successfully!")

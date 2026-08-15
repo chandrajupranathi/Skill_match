@@ -13,43 +13,34 @@ from sklearn.impute import SimpleImputer
 # ============================================================
 
 PROJECT_DIR = Path(__file__).resolve().parent.parent
+
 DATASET_FOLDER = PROJECT_DIR / "dataset"
+
+
+# ============================================================
+# 2. INPUT AND OUTPUT FILE PATHS
+# ============================================================
+
+INPUT_FILE = DATASET_FOLDER / "reordered_raw.csv"
 
 OUTPUT_FILE = DATASET_FOLDER / "cleaned_mean_model_imputed.csv"
 
 
 # ============================================================
-# 2. FIND ORIGINAL CSV
+# 3. CHECK INPUT FILE
 # ============================================================
 
-csv_files = [
-    file for file in DATASET_FOLDER.glob("*.csv")
-    if file.name != "cleaned_mean_model_imputed.csv"
-]
-
-
-if len(csv_files) == 0:
+if not INPUT_FILE.exists():
     raise FileNotFoundError(
-        f"No CSV file found inside:\n{DATASET_FOLDER}\n\n"
-        "Please place your original dataset inside the dataset folder."
+        f"Original dataset not found:\n{INPUT_FILE}"
     )
 
 
 print("=" * 60)
-print("CSV FILES FOUND")
+print("INPUT DATASET")
 print("=" * 60)
 
-for i, file in enumerate(csv_files, start=1):
-    print(i, "->", file.name)
-
-
-# ============================================================
-# 3. SELECT ORIGINAL DATASET
-# ============================================================
-
-INPUT_FILE = csv_files[0]
-
-print("\nUsing dataset:")
+print("Using dataset:")
 print(INPUT_FILE)
 
 
@@ -58,6 +49,7 @@ print(INPUT_FILE)
 # ============================================================
 
 df = pd.read_csv(INPUT_FILE)
+
 
 print("\n" + "=" * 60)
 print("ORIGINAL DATASET")

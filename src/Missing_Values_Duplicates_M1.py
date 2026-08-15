@@ -7,7 +7,7 @@ import seaborn as sns
 # 1. Load the Dataset
 # ============================================================
 
-file_path = "C:/Users/AMAN/Documents/Skill_Match/dataset/reordered_raw.csv"
+file_path = r"C:\Users\LEELA PRASAD\PycharmProjects\Skill_Match\dataset\reordered_raw.csv"
 
 df = pd.read_csv(file_path)
 

@@ -3,36 +3,53 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+from pathlib import Path
 
 
-# Ensure the output directory exists
+# ============================================================
+# 1. PROJECT PATH
+# ============================================================
 
-output_dir = "C:/Users/AMAN/Documents/Skill_Match/output/Corelation_heatmap"
-os.makedirs(output_dir, exist_ok=True)
+PROJECT_DIR = Path(__file__).resolve().parent.parent
 
+DATASET_FOLDER = PROJECT_DIR / "dataset"
 
-# -------------------------------------------------------------
-# 1. Load Employee Attrition Dataset
-# -------------------------------------------------------------
+OUTPUT_DIR = PROJECT_DIR / "output" / "Correlation_heatmap"
 
-df = pd.read_csv(
-    "C:/Users/AMAN/Documents/Skill_Match/dataset/reordered_raw.csv"
+OUTPUT_DIR.mkdir(
+    parents=True,
+    exist_ok=True
 )
 
-print("Dataset Loaded Successfully. Shape:", df.shape)
+
+# ============================================================
+# 2. LOAD EMPLOYEE ATTRITION DATASET
+# ============================================================
+
+INPUT_FILE = DATASET_FOLDER / "reordered_raw.csv"
+
+df = pd.read_csv(INPUT_FILE)
+
+print("=" * 60)
+print("DATASET LOADED")
+print("=" * 60)
+
+print("Input file :", INPUT_FILE)
+print("Shape      :", df.shape)
 
 
-# -------------------------------------------------------------
-# 2. Compute Correlation Matrix & Generate Heatmap
-# -------------------------------------------------------------
-
-# Select only numerical columns for correlation
+# ============================================================
+# 3. SELECT NUMERICAL COLUMNS
+# ============================================================
 
 numerical_cols = df.select_dtypes(
-    include=[np.number]
+    include=np.number
 ).columns.tolist()
 
-# Remove ID / constant columns from correlation analysis
+
+# ============================================================
+# 4. REMOVE ID / CONSTANT COLUMNS
+# ============================================================
 
 columns_to_remove = [
     "EmployeeNumber",
@@ -41,22 +58,37 @@ columns_to_remove = [
 ]
 
 numerical_cols = [
-    col for col in numerical_cols
+    col
+    for col in numerical_cols
     if col not in columns_to_remove
 ]
+
+
+print("\nNumerical columns used:")
+print(numerical_cols)
+
+
+# ============================================================
+# 5. CORRELATION MATRIX
+# ============================================================
 
 corr_matrix = df[numerical_cols].corr()
 
 
-# Print matrix to terminal
+print("\n" + "=" * 60)
+print("CORRELATION MATRIX")
+print("=" * 60)
 
-print("\n--- Correlation Matrix ---")
 print(corr_matrix)
 
 
-# Create Heatmap
+# ============================================================
+# 6. CREATE CORRELATION HEATMAP
+# ============================================================
 
-plt.figure(figsize=(14, 10))
+plt.figure(
+    figsize=(14, 10)
+)
 
 sns.heatmap(
     corr_matrix,
@@ -78,12 +110,11 @@ plt.title(
 plt.tight_layout()
 
 
-# Export Heatmap
+# ============================================================
+# 7. SAVE CORRELATION HEATMAP
+# ============================================================
 
-heatmap_path = os.path.join(
-    output_dir,
-    "correlation_heatmap.png"
-)
+heatmap_path = OUTPUT_DIR / "correlation_heatmap.png"
 
 plt.savefig(
     heatmap_path,
@@ -93,30 +124,35 @@ plt.savefig(
 
 plt.close()
 
-print(
-    f"Exported heatmap to: {heatmap_path}"
-)
+print("\nCorrelation heatmap saved to:")
+print(heatmap_path)
 
 
-# -------------------------------------------------------------
-# 3. Produce Boxplots: Numerical Features vs Attrition
-# -------------------------------------------------------------
+# ============================================================
+# 8. BOXPLOTS: NUMERICAL FEATURES VS ATTRITION
+# ============================================================
 
 target_col = "Attrition"
 
 
 if target_col in df.columns:
 
+    print("\n" + "=" * 60)
+    print("CREATING BOXPLOTS")
+    print("=" * 60)
+
     for col in numerical_cols:
 
-        plt.figure(figsize=(6, 5))
+        plt.figure(
+            figsize=(6, 5)
+        )
 
         sns.boxplot(
             x=target_col,
             y=col,
             data=df,
-            palette="Set2",
             hue=target_col,
+            palette="Set2",
             legend=False
         )
 
@@ -132,15 +168,16 @@ if target_col in df.columns:
         plt.tight_layout()
 
 
-        # Export individual boxplot
+        # ====================================================
+        # SAVE BOXPLOT
+        # ====================================================
 
         boxplot_filename = (
             f"boxplot_{col}_vs_{target_col}.png"
         )
 
-        boxplot_path = os.path.join(
-            output_dir,
-            boxplot_filename
+        boxplot_path = (
+            OUTPUT_DIR / boxplot_filename
         )
 
         plt.savefig(
@@ -152,7 +189,7 @@ if target_col in df.columns:
         plt.close()
 
         print(
-            f"Exported boxplot to: {boxplot_path}"
+            f"Saved: {boxplot_filename}"
         )
 
 
@@ -160,8 +197,19 @@ else:
 
     print(
         f"\nTarget column '{target_col}' "
-        "not found in dataset. Skipping boxplots."
+        "not found in dataset."
     )
 
+    print("Skipping boxplots.")
 
-print("\nAll EDA tasks completed successfully!")
+
+# ============================================================
+# 9. FINAL MESSAGE
+# ============================================================
+
+print("\n" + "=" * 60)
+print("ALL EDA TASKS COMPLETED SUCCESSFULLY!")
+print("=" * 60)
+
+print("\nOutput folder:")
+print(OUTPUT_DIR)

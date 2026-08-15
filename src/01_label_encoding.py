@@ -6,9 +6,9 @@ from sklearn.preprocessing import LabelEncoder
 # FILE PATH
 # ============================================================
 
-INPUT_FILE = "C:/Users/AMAN/Documents/Skill_Match/dataset/reordered_raw.csv"
+INPUT_FILE = r"C:\Users\LEELA PRASAD\PycharmProjects\Skill_Match\dataset\cleaned_mean_model_imputed.csv"
 
-OUTPUT_FILE = "C:/Users/AMAN/Documents/Skill_Match/dataset/label_encoding.csv"
+OUTPUT_FILE = r"C:\Users\LEELA PRASAD\PycharmProjects\Skill_Match\dataset\label_encoded.csv"
 
 
 # ============================================================
@@ -43,6 +43,7 @@ categorical_columns = [
 
 
 print("\nCategorical columns:")
+
 for column in categorical_columns:
     print("-", column)
 
