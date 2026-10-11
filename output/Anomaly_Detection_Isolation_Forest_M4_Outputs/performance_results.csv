@@ -1,0 +1,12 @@
+Metric,Value
+Total Records,1470
+Numeric Features Used,24
+Constant Features Removed,2
+Missing Values Before Processing,0
+Missing Values After Processing,0
+Normal Records,973
+Normal Percentage,66.19%
+Anomalous Records,497
+Anomaly Percentage,33.81%
+Isolation Forest Estimators,200
+Random State,42

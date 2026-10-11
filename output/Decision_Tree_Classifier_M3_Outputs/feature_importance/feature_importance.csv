@@ -1,0 +1,56 @@
+Feature,Importance
+numeric__TotalWorkingYears,0.20238079486570798
+numeric__DailyRate,0.1276636737957457
+numeric__Age,0.1156687187335908
+numeric__MonthlyIncome,0.08549314748386105
+categorical__OverTime_No,0.08181854203309763
+categorical__MaritalStatus_Single,0.05065155648608781
+categorical__OverTime_Yes,0.04896936069485246
+numeric__HourlyRate,0.044370904569036675
+categorical__JobRole_Research Scientist,0.04430720325200071
+numeric__YearsInCurrentRole,0.029816360313620522
+categorical__JobRole_Sales Executive,0.027655754493792914
+numeric__EnvironmentSatisfaction,0.027314899633390552
+numeric__WorkLifeBalance,0.02031309793054335
+categorical__EducationField_Medical,0.01897404747230397
+numeric__YearsSinceLastPromotion,0.017019610197118673
+numeric__NumCompaniesWorked,0.015462213782716483
+numeric__TrainingTimesLastYear,0.01401144751579911
+numeric__RelationshipSatisfaction,0.00905355070251635
+numeric__YearsWithCurrManager,0.008494336320584201
+categorical__JobRole_Sales Representative,0.007330674022990853
+numeric__PercentSalaryHike,0.001739287684961201
+numeric__MonthlyRate,0.0014908180156810325
+numeric__EmployeeCount,0.0
+numeric__YearsAtCompany,0.0
+numeric__PerformanceRating,0.0
+numeric__StandardHours,0.0
+numeric__StockOptionLevel,0.0
+numeric__JobInvolvement,0.0
+numeric__JobSatisfaction,0.0
+numeric__JobLevel,0.0
+numeric__EmployeeNumber,0.0
+numeric__DistanceFromHome,0.0
+numeric__Education,0.0
+categorical__Department_Research & Development,0.0
+categorical__Department_Sales,0.0
+categorical__BusinessTravel_Travel_Frequently,0.0
+categorical__BusinessTravel_Travel_Rarely,0.0
+categorical__Department_Human Resources,0.0
+categorical__BusinessTravel_Non-Travel,0.0
+categorical__Gender_Female,0.0
+categorical__EducationField_Technical Degree,0.0
+categorical__EducationField_Other,0.0
+categorical__EducationField_Marketing,0.0
+categorical__EducationField_Human Resources,0.0
+categorical__EducationField_Life Sciences,0.0
+categorical__JobRole_Human Resources,0.0
+categorical__Gender_Male,0.0
+categorical__JobRole_Research Director,0.0
+categorical__JobRole_Manufacturing Director,0.0
+categorical__JobRole_Manager,0.0
+categorical__JobRole_Laboratory Technician,0.0
+categorical__JobRole_Healthcare Representative,0.0
+categorical__MaritalStatus_Divorced,0.0
+categorical__MaritalStatus_Married,0.0
+categorical__Over18_Y,0.0

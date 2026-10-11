@@ -1,0 +1,127 @@
+SKILL MATCH DATASET INFORMATION
+===========================================================================
+
+Dataset file: C:\Users\chand\Downloads\Skill_Match (2)\Skill_Match\dataset\reordered_raw.csv
+Rows: 1470
+Columns: 35
+Target column: Attrition
+Number of classes: 2
+
+Column names:
+- Age
+- BusinessTravel
+- DailyRate
+- Department
+- DistanceFromHome
+- Education
+- EducationField
+- EmployeeCount
+- EmployeeNumber
+- EnvironmentSatisfaction
+- Gender
+- HourlyRate
+- JobInvolvement
+- JobLevel
+- JobRole
+- JobSatisfaction
+- MaritalStatus
+- MonthlyIncome
+- MonthlyRate
+- NumCompaniesWorked
+- Over18
+- OverTime
+- PercentSalaryHike
+- PerformanceRating
+- RelationshipSatisfaction
+- StandardHours
+- StockOptionLevel
+- TotalWorkingYears
+- TrainingTimesLastYear
+- WorkLifeBalance
+- YearsAtCompany
+- YearsInCurrentRole
+- YearsSinceLastPromotion
+- YearsWithCurrManager
+- Attrition
+
+Data types:
+Age                         int64
+BusinessTravel                str
+DailyRate                   int64
+Department                    str
+DistanceFromHome            int64
+Education                   int64
+EducationField                str
+EmployeeCount               int64
+EmployeeNumber              int64
+EnvironmentSatisfaction     int64
+Gender                        str
+HourlyRate                  int64
+JobInvolvement              int64
+JobLevel                    int64
+JobRole                       str
+JobSatisfaction             int64
+MaritalStatus                 str
+MonthlyIncome               int64
+MonthlyRate                 int64
+NumCompaniesWorked          int64
+Over18                        str
+OverTime                      str
+PercentSalaryHike           int64
+PerformanceRating           int64
+RelationshipSatisfaction    int64
+StandardHours               int64
+StockOptionLevel            int64
+TotalWorkingYears           int64
+TrainingTimesLastYear       int64
+WorkLifeBalance             int64
+YearsAtCompany              int64
+YearsInCurrentRole          int64
+YearsSinceLastPromotion     int64
+YearsWithCurrManager        int64
+Attrition                     str
+dtype: object
+
+Missing values:
+Age                         0
+BusinessTravel              0
+DailyRate                   0
+Department                  0
+DistanceFromHome            0
+Education                   0
+EducationField              0
+EmployeeCount               0
+EmployeeNumber              0
+EnvironmentSatisfaction     0
+Gender                      0
+HourlyRate                  0
+JobInvolvement              0
+JobLevel                    0
+JobRole                     0
+JobSatisfaction             0
+MaritalStatus               0
+MonthlyIncome               0
+MonthlyRate                 0
+NumCompaniesWorked          0
+Over18                      0
+OverTime                    0
+PercentSalaryHike           0
+PerformanceRating           0
+RelationshipSatisfaction    0
+StandardHours               0
+StockOptionLevel            0
+TotalWorkingYears           0
+TrainingTimesLastYear       0
+WorkLifeBalance             0
+YearsAtCompany              0
+YearsInCurrentRole          0
+YearsSinceLastPromotion     0
+YearsWithCurrManager        0
+Attrition                   0
+dtype: int64
+
+Class distribution:
+Attrition
+No     1233
+Yes     237
+Name: count, dtype: int64

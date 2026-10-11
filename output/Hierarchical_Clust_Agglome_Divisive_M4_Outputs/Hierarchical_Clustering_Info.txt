@@ -1,0 +1,38 @@
+SKILL MATCH - HIERARCHICAL CLUSTERING
+================================================
+
+Original Dataset:
+C:\Users\chand\Downloads\Skill_Match (2)\Skill_Match\dataset\reordered_raw.csv
+
+Original Dataset Shape:
+(1470, 35)
+
+Features Used:
+- Age
+- DailyRate
+- DistanceFromHome
+- Education
+
+Records Used:
+500
+
+Number of Requested Clusters:
+3
+
+Number of Effective Clusters:
+3
+
+Random State:
+42
+
+Agglomerative Metrics:
+Silhouette Score: 0.1864320567915287
+Calinski-Harabasz Index: 110.07982380402932
+Davies-Bouldin Index: 1.6985704796117573
+
+Divisive Metrics:
+Silhouette Score: 0.18968801416230857
+Calinski-Harabasz Index: 118.24543851399473
+Davies-Bouldin Index: 1.6197996304905642
+
+Original dataset was not modified.

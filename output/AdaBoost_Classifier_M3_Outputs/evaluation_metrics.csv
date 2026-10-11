@@ -1,0 +1,2 @@
+Model,Target Column,Accuracy,Precision,Recall,F1 Score,Training Samples,Testing Samples,Number of Features,Number of Classes
+AdaBoost Classifier,Attrition,0.8469387755102041,0.8192288278947942,0.8469387755102041,0.8228967384893139,1176,294,52,2

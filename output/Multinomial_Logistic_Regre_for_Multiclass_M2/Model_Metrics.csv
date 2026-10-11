@@ -1,0 +1,7 @@
+Metric,Value
+Accuracy,0.8605442176870748
+Accuracy (%),86.05442176870748
+Weighted Precision,0.8413339503424793
+Weighted Recall,0.8605442176870748
+Weighted F1 Score,0.8433287825038248
+Cross-Entropy Loss,0.34937066686609874

@@ -1,0 +1,14 @@
+Parameter,Value
+Algorithm,Decision Tree Classifier
+Criterion,entropy
+Maximum Depth,None
+Minimum Samples Split,2
+Minimum Samples Leaf,1
+Cross Validation,Stratified K-Fold
+Number of Folds,5
+Shuffle,True
+Random State,42
+Numeric Imputation,Median
+Categorical Imputation,Most Frequent
+Categorical Encoding,One-Hot Encoding
+Target Column,Attrition

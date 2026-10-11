@@ -1,0 +1,4 @@
+Image,Description
+actual_vs_predicted.png,Actual versus predicted attrition values
+residual_comparison.png,Residual comparison between both methods
+gradient_descent_loss.png,Training MSE across Gradient Descent epochs

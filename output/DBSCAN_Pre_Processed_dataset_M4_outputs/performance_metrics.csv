@@ -1,0 +1,9 @@
+Metric,Value
+Total Records Used,1470.0
+Number of Clusters (excluding noise),0.0
+Number of Noise Points,1470.0
+Silhouette Score,
+Calinski-Harabasz Score,
+Davies-Bouldin Score,
+Epsilon,0.8
+Minimum Samples,10.0

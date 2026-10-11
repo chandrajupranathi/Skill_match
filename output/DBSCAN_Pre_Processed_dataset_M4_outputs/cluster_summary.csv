@@ -1,0 +1,2 @@
+DBSCAN_Cluster,Age,DailyRate,DistanceFromHome,EnvironmentSatisfaction,JobInvolvement,JobLevel,JobSatisfaction,MonthlyIncome,NumCompaniesWorked,PercentSalaryHike,PerformanceRating,RelationshipSatisfaction,StockOptionLevel,TotalWorkingYears,TrainingTimesLastYear,WorkLifeBalance,YearsAtCompany,YearsInCurrentRole,YearsSinceLastPromotion,YearsWithCurrManager
+-1,36.92,802.49,9.19,2.72,2.73,2.06,2.73,6502.93,2.69,15.21,3.15,2.71,0.79,11.28,2.8,2.76,7.01,4.23,2.19,4.12

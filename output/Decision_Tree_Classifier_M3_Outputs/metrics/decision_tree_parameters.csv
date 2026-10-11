@@ -1,0 +1,9 @@
+Parameter,Value
+Algorithm,Decision Tree Classifier
+Target Column,Attrition
+Criterion,gini
+Maximum Depth,6
+Minimum Samples Split,10
+Minimum Samples Leaf,5
+Random State,42
+Test Size,0.2

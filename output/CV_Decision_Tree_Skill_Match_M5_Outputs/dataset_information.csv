@@ -1,0 +1,15 @@
+Parameter,Value
+Input Dataset,C:\Users\chand\Downloads\Skill_Match (2)\Skill_Match\dataset\reordered_raw.csv
+Original Rows,1470
+Original Columns,35
+Working Rows,1470
+Working Columns,35
+Target Column,Attrition
+Number of Classes,2
+Original Feature Count,30
+Numeric Features,23
+Categorical Features,7
+Identifier Columns Removed,EmployeeNumber
+Constant Columns Removed,"EmployeeCount, Over18, StandardHours"
+Duplicate Rows Removed,0
+Cross Validation Folds,5

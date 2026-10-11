@@ -1,0 +1,11 @@
+Parameter,Value
+Target column,Attrition
+Test size,0.2
+Random state,42
+Solver,lbfgs
+Maximum iterations,2000
+Training samples,1176
+Testing samples,294
+Original feature count,30
+Encoded feature count,51
+Class names,"No, Yes"

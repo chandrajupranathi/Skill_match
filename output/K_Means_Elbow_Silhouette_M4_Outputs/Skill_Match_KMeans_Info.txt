@@ -1,0 +1,26 @@
+SKILL MATCH - K-MEANS CLUSTERING
+============================================================
+
+Input dataset: C:\Users\chand\Downloads\Skill_Match (2)\Skill_Match\dataset\reordered_raw.csv
+Rows: 1470
+Features used: 2
+
+Features:
+- Age
+- MonthlyIncome
+
+K-Means best K: 2
+K-Means++ best K: 2
+
+K-Means inertia: 1434.5641
+K-Means silhouette: 0.5220
+K-Means Calinski-Harabasz: 1540.5237
+K-Means Davies-Bouldin: 0.8263
+
+K-Means++ inertia: 1434.5676
+K-Means++ silhouette: 0.5224
+K-Means++ Calinski-Harabasz: 1540.5164
+K-Means++ Davies-Bouldin: 0.8257
+
+Detected target column: Attrition
+Original dataset was not modified.

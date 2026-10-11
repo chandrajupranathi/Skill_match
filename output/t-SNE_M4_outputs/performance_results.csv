@@ -1,0 +1,16 @@
+Parameter,Value
+Input Dataset,C:\Users\chand\Downloads\Skill_Match (2)\Skill_Match\dataset\final_preprocessed.csv
+Original Number of Records,1470
+Original Number of Columns,56
+Numeric Features Used,52
+Constant Features Removed,3
+Missing Values Before Processing,0
+Missing Values After Processing,0
+t-SNE Output Dimensions,2
+Perplexity,30
+Learning Rate,auto
+Maximum Iterations,1000
+Initialization,PCA
+Random State,42
+KL Divergence,1.3016796112060547
+Final Iteration Count,999

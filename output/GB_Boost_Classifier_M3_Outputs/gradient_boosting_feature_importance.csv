@@ -1,0 +1,53 @@
+Feature,Importance
+num__MonthlyIncome,0.10284160254306976
+num__Age,0.0861582896924324
+num__TotalWorkingYears,0.08422093422442957
+cat__OverTime_Yes,0.054394590315103485
+num__NumCompaniesWorked,0.05084687020403501
+num__StockOptionLevel,0.049770710197697764
+num__YearsWithCurrManager,0.04712089195079299
+num__EnvironmentSatisfaction,0.03828239088047737
+cat__OverTime_No,0.03693154517708431
+num__DailyRate,0.036408480988318365
+num__JobInvolvement,0.03555704483942499
+num__HourlyRate,0.03459684488370583
+num__WorkLifeBalance,0.03411663318495596
+num__DistanceFromHome,0.03138729201031845
+num__EmployeeNumber,0.030134739214704446
+num__JobSatisfaction,0.024813112755784916
+cat__JobRole_Sales Executive,0.023168440187703518
+num__RelationshipSatisfaction,0.020386423332589974
+num__JobLevel,0.02001527838370919
+num__TrainingTimesLastYear,0.01714152924805429
+num__MonthlyRate,0.016429374454155148
+cat__JobRole_Laboratory Technician,0.01581967398846159
+cat__JobRole_Research Scientist,0.015270066272307646
+cat__BusinessTravel_Travel_Frequently,0.015059443112298261
+num__YearsAtCompany,0.012660548355951134
+num__YearsSinceLastPromotion,0.012187846225821558
+cat__Department_Research & Development,0.011268563125261132
+num__PercentSalaryHike,0.009002998163924948
+cat__JobRole_Sales Representative,0.006820158616988258
+cat__BusinessTravel_Non-Travel,0.006746640065481239
+cat__EducationField_Marketing,0.003690197319640573
+num__Education,0.00316340585879748
+num__YearsInCurrentRole,0.0029889516429207072
+cat__EducationField_Human Resources,0.0028648847859847645
+cat__Gender_Male,0.002672316166141903
+cat__MaritalStatus_Married,0.0014429650919083514
+cat__Gender_Female,0.0014190029668492712
+cat__EducationField_Technical Degree,0.0012815094378638475
+cat__BusinessTravel_Travel_Rarely,0.0005302376447846539
+cat__JobRole_Research Director,0.00038757249006511044
+num__PerformanceRating,0.0
+cat__Department_Human Resources,0.0
+cat__Department_Sales,0.0
+cat__EducationField_Life Sciences,0.0
+cat__EducationField_Other,0.0
+cat__EducationField_Medical,0.0
+cat__JobRole_Healthcare Representative,0.0
+cat__JobRole_Human Resources,0.0
+cat__JobRole_Manufacturing Director,0.0
+cat__JobRole_Manager,0.0
+cat__MaritalStatus_Divorced,0.0
+cat__MaritalStatus_Single,0.0

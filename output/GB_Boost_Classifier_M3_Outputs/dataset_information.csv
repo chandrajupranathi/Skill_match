@@ -1,0 +1,11 @@
+Property,Value
+Original Dataset Path,C:\Users\chand\Downloads\Skill_Match (2)\Skill_Match\dataset\reordered_raw.csv
+Target Column,Attrition
+Rows Used,1470
+Original Feature Count,34
+Features After Constant Removal,31
+Numerical Features,24
+Categorical Features,7
+Training Samples,1176
+Testing Samples,294
+Number of Classes,2

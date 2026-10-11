@@ -1,0 +1,9 @@
+Metric,Value
+Original Number of Rows,1470.0
+Original Number of Numeric Features,26.0
+Number of PCA Components,26.0
+Components for 80% Variance,14.0
+Components for 90% Variance,17.0
+Components for 95% Variance,19.0
+Selected Components for 95% PCA,19.0
+Actual Variance Retained by 95% PCA,96.2502

@@ -1,0 +1,9 @@
+Parameter,Value
+Input Dataset,C:\Users\chand\Downloads\Skill_Match (2)\Skill_Match\dataset\reordered_raw.csv
+Output Folder,C:\Users\chand\Downloads\Skill_Match (2)\Skill_Match\output\PCA_M4_Outputs
+Original Rows,1470
+Original Columns,35
+Numeric Features Used,26
+Components Generated,26
+Components for 95% Variance,19
+Execution Time (Seconds),1.6822

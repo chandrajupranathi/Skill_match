@@ -1,0 +1,13 @@
+{
+    "Dataset File": "final_preprocessed.csv",
+    "Original Rows": 1470,
+    "Feature Count": 52,
+    "Target Column": "Attrition",
+    "Classes": [
+        "0",
+        "1"
+    ],
+    "Training Rows": 1176,
+    "Testing Rows": 294,
+    "Missing Target Rows Removed": 0
+}

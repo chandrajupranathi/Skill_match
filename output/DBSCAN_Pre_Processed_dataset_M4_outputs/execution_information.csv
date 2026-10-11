@@ -1,0 +1,9 @@
+Parameter,Value
+Input File,C:\Users\chand\Downloads\Skill_Match (2)\Skill_Match\dataset\reordered_raw.csv
+Output Directory,C:\Users\chand\Downloads\Skill_Match (2)\Skill_Match\output\DBSCAN_Pre_Processed_dataset_M4_outputs
+Original Dataset Rows,1470
+Rows Used for Clustering,1470
+Number of Features,20
+DBSCAN Epsilon,0.8
+DBSCAN Minimum Samples,10
+Execution Time (seconds),1.4534

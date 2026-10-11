@@ -1,0 +1,12 @@
+{
+    "Model": "AdaBoost Classifier",
+    "Target Column": "Attrition",
+    "Accuracy": 0.8469387755102041,
+    "Precision": 0.8192288278947942,
+    "Recall": 0.8469387755102041,
+    "F1 Score": 0.8228967384893139,
+    "Training Samples": 1176,
+    "Testing Samples": 294,
+    "Number of Features": 52,
+    "Number of Classes": 2
+}

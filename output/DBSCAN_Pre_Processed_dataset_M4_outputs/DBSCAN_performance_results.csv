@@ -1,0 +1,16 @@
+Metric,Value
+Algorithm,DBSCAN
+Input Dataset,reordered_raw.csv
+Original Dataset Rows,1470
+Rows Used,1470
+Rows Removed,0
+Number of Features,20
+Features Used,"Age, DailyRate, DistanceFromHome, EnvironmentSatisfaction, JobInvolvement, JobLevel, JobSatisfaction, MonthlyIncome, NumCompaniesWorked, PercentSalaryHike, PerformanceRating, RelationshipSatisfaction, StockOptionLevel, TotalWorkingYears, TrainingTimesLastYear, WorkLifeBalance, YearsAtCompany, YearsInCurrentRole, YearsSinceLastPromotion, YearsWithCurrManager"
+Scaling Method,StandardScaler
+DBSCAN eps,0.8
+DBSCAN min_samples,10
+Number of Clusters,0
+Noise Points,1470
+Clustered Points,0
+Noise Percentage,100.0
+Clustered Percentage,0.0

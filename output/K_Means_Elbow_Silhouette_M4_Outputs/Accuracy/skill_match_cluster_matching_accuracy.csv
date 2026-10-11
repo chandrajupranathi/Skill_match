@@ -1,0 +1,3 @@
+Method,Target_Column,Cluster_Matching_Accuracy,Accuracy_Percentage
+K-Means,Attrition,0.8387755102040816,83.87755102040816
+K-Means++,Attrition,0.8387755102040816,83.87755102040816

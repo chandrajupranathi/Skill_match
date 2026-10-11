@@ -1,0 +1,9 @@
+Item,Description
+Purpose,Non-linear dimensionality reduction and visualization
+Method,t-SNE
+Input,Standardized numeric input features
+Output,Two-dimensional embedding
+Interpretation,Nearby points generally represent similar observations locally
+Distance Interpretation,Local neighborhood relationships are more meaningful than global distances
+Original Dataset,Not modified
+Target Column,Attrition is excluded from input features when present

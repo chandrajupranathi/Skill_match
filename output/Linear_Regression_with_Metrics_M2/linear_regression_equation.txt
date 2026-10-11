@@ -1,0 +1,5 @@
+Linear Regression Equation
+========================================
+Target: Attrition (Yes = 1, No = 0)
+
+Attrition = 0.8863 - 0.0036 * Age - 0.0000 * DailyRate + 0.0037 * DistanceFromHome + 0.0034 * Education - 0.0298 * EnvironmentSatisfaction - 0.0000 * HourlyRate - 0.0570 * JobInvolvement - 0.0338 * JobLevel - 0.0357 * JobSatisfaction + 0.0000 * MonthlyIncome + 0.0000 * MonthlyRate + 0.0184 * NumCompaniesWorked - 0.0039 * PercentSalaryHike + 0.0159 * PerformanceRating - 0.0092 * RelationshipSatisfaction - 0.0629 * StockOptionLevel - 0.0039 * TotalWorkingYears - 0.0132 * TrainingTimesLastYear - 0.0300 * WorkLifeBalance + 0.0089 * YearsAtCompany - 0.0148 * YearsInCurrentRole + 0.0115 * YearsSinceLastPromotion - 0.0115 * YearsWithCurrManager
